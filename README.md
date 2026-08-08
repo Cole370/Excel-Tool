@@ -12,12 +12,13 @@ See `CLAUDE_EXCEL_TOOL_SPEC.md` (provided separately) for the full design.
 | File | Build step | Purpose |
 |------|-----------|---------|
 | `Sandbox.bas` | 1 | Filesystem path guard. Restricts all disk access to `C:\Users\colet\Documents\INDEX`. Includes `Test_Sandbox` self-test. |
+| `UndoStack.bas` | 2 | Snapshot cell formulas before writes; `RestoreLastBatch` puts them back (Ctrl+Z can't). Keeps last 10 batches. Includes `Test_Undo` self-test and `Demo_WriteToSelectedCell`. |
 
 ## Build progress
 
 - [x] Gate 0 — API credentials verified
 - [x] Step 1 — Path guard + unit tests
-- [ ] Step 2 — Undo snapshot + restore
+- [x] Step 2 — Undo snapshot + restore
 - [ ] Step 3 — API plumbing (cache + retry)
 - [ ] Step 4 — Catalog indexer
 - [ ] Step 5 — `IMM` thunk + `CLAUDE()` macro + validator
